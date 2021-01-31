@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  myql:
+    image: mysql:8.0
+    restart: always
+  docker-rails:
+    build:
+      context: .
+    volumes:
+      - .:/home/app
+    depends_on:
+      - myql
+    links:
+      - myql
